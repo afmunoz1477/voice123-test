@@ -1,0 +1,29 @@
+<div class="container-fluid justify-content-center">
+    <div class="container">
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button (click)="searchByKeys(termino.value)" class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+                <input #termino (keyup)="searchByKeys(termino.value)" type="text" class="form-control" placeholder="Enter keywords..." aria-label="" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+                <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="actors">
+        <div class="card-columns mt-2" id="cardsResult">
+            <app-actors-card [actor]="actor" [key]="key" class="card text-center animated fadeIn" *ngFor="let actor of list"></app-actors-card>
+        </div>
+        <div class="row mt-3">
+            <ul class="nav nav-pills nav-justified text-info" style="margin-left: 30%">
+                <li (click)="changePage(-1)"><a class="page-link">Previous</a></li>
+                <li *ngFor="let page of pages" (click)="changePage(page)"><a class="page-link"> {{page}} </a></li>
+                <li (click)="changePage(1)"><a class="page-link">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

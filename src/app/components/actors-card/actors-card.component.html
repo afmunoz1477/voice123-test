@@ -1,0 +1,26 @@
+<img class="card-img mt-4" [src]="actor.user.picture_large | imageHandler" style="width: 80%" alt="Card image cap">
+<div class="card-body">
+    <h3 class="card-title text-black-50"> {{actor.user.name | highligth: key}} </h3>
+    <p class="card-text text-dark">
+        {{ actor.headline | highligth }}
+    </p>
+    <p class="card-text"><small class="text-muted">Visit {{actor.user.name | highligth: key}} profile 
+                <a href="https://voice123.com/{{actor.user.username}}" target="_blank">here</a> </small></p>
+    <div class="col">
+        <div class="container">
+            <audio id="music/{{actor.user.username}}" src="https://voice123.com/mp3/demos/{{actor.relevant_sample.file | demofile}}" preload="true">
+                            </audio>
+            <div id="audioplayer">
+                <button (click)="playSample(!play, actor.user.username)" class="btn mt-2">
+                            <span style="display: none" id="Pause/{{actor.user.username}}">Pause</span>
+                            <span style="display: block" id="Play/{{actor.user.username}}" >Play</span>
+                        </button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="col">
+        <p class="card-text"><small class="text-muted">Hear my new samples on my 
+                            <a href="https://voice123.com/{{actor.user.username}}#samples_section" target="_blank">web profile</a> </small></p>
+    </div>
+</div>
